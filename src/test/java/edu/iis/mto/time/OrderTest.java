@@ -34,4 +34,23 @@ class OrderTest {
         Assertions.assertEquals(State.CANCELLED, order.getOrderState());
     }
 
+    @Test
+    public void checkIfConfirmAfter23Hours_shouldSetStateRealized() {
+        DateTime dateTime = DateTime.now();
+        DatatimeClock clock = Mockito.mock(DatatimeClock.class);
+
+        when(clock.getTime())
+            .thenReturn(dateTime)
+            .thenReturn(dateTime.plusHours(23));
+
+        Order order = new Order(clock);
+        order.addItem(new OrderItem());
+        order.submit();
+        order.confirm();
+        order.realize();
+
+        Assertions.assertEquals(State.REALIZED, order.getOrderState());
+    }
+
+
 }
