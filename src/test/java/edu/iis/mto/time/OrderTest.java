@@ -52,5 +52,11 @@ class OrderTest {
         Assertions.assertEquals(State.REALIZED, order.getOrderState());
     }
 
+    @Test
+    public void checkIfTryToRealizeOrderFromCreatedState_shouldThrowOrderStateException() {
+        Order order = new Order();
+        order.addItem(orderItem);
+        Assertions.assertThrows(OrderStateException.class, () -> order.realize());
+    }
 
 }
