@@ -18,7 +18,7 @@ class OrderTest {
     private OrderItem orderItem;
 
     @Test
-    public void checkConfirmAfter25HoursOfSubmit_shouldThrowOrderExpiredException() {
+    public void checkIfConfirmOrderAfter25HoursOfSubmit_shouldThrowOrderExpiredException() {
         DateTime dateTime = DateTime.now();
         DatatimeClock clock = Mockito.mock(DatatimeClock.class);
 
@@ -35,7 +35,7 @@ class OrderTest {
     }
 
     @Test
-    public void checkIfConfirmAfter23Hours_shouldSetStateRealized() {
+    public void checkIfConfirmOrderAfter23Hours_shouldSetStateRealized() {
         DateTime dateTime = DateTime.now();
         DatatimeClock clock = Mockito.mock(DatatimeClock.class);
 
